@@ -1,10 +1,9 @@
 ### AnyKernel3 Ramdisk Mod Script
-## osm0sis @ xda-developers & GitHub @ Xiaomichael&cctv18
 
 ### AnyKernel setup
 # global properties
 properties() { '
-kernel.string=KernelSU by KernelSU Developers | Build by cctv18
+kernel.string=KernelSU by KernelSU Developers | Build by Elaina
 do.devicecheck=0
 do.modules=0
 do.systemless=0
@@ -31,7 +30,7 @@ no_magisk_check=1
 # import functions/variables and setup patching - see for reference (DO NOT REMOVE)
 . tools/ak3-core.sh
 
-ui_print "内核构建者: Coolapk@cctv18"
+ui_print "Kernel Build @Elaina"
 
 # boot install
 if [ -L "/dev/block/bootdevice/by-name/init_boot_a" -o -L "/dev/block/by-name/init_boot_a" ]; then
