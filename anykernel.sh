@@ -3,7 +3,7 @@
 ### AnyKernel setup
 # global properties
 properties() { '
-kernel.string=KernelSU by KernelSU Developers | Build by Elaina
+kernel.string=KernelSU by KernelSU Developers | Build by Elaina伊蕾娜
 do.devicecheck=0
 do.modules=0
 do.systemless=0
@@ -30,7 +30,7 @@ NO_MAGISK_CHECK=1
 # import functions/variables and setup patching - see for reference (DO NOT REMOVE)
 . tools/ak3-core.sh
 
-ui_print "Kernel Build @Elaina"
+ui_print "Kernel Build @Elaina伊蕾娜"
 
 # Resolving occasional file system I/O latency issues which may cause binary execution exceptions
 sync
