@@ -21,24 +21,29 @@ supported.vendorpatchlevels=
 
 ### AnyKernel install
 ## boot shell variables
-block=boot
-is_slot_device=auto
-ramdisk_compression=auto
-patch_vbmeta_flag=auto
-no_magisk_check=1
+BLOCK=boot
+IS_SLOT_DEVICE=auto
+RAMDISK_COMPRESSION=auto
+PATCH_VBMETA_FLAG=auto
+NO_MAGISK_CHECK=1
 
 # import functions/variables and setup patching - see for reference (DO NOT REMOVE)
 . tools/ak3-core.sh
 
 ui_print "Kernel Build @Elaina"
 
+# Resolving occasional file system I/O latency issues which may cause binary execution exceptions
+sync
+sleep 0.5
+chmod -R 755 $AKHOME/tools
+
 # boot install
-if [ -L "/dev/block/bootdevice/by-name/init_boot_a" -o -L "/dev/block/by-name/init_boot_a" ]; then
-    split_boot # for devices with init_boot ramdisk
-    flash_boot # for devices with init_boot ramdisk
+split_boot
+if [ -f "split_img/ramdisk.cpio" ]; then
+    unpack_ramdisk
+    write_boot
 else
-    dump_boot # use split_boot to skip ramdisk unpack, e.g. for devices with init_boot ramdisk
-    write_boot # use flash_boot to skip ramdisk repack, e.g. for devices with init_boot ramdisk
+    flash_boot
 fi
 ## end boot install
 # 优先选择模块路径
